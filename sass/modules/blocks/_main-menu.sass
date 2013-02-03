@@ -1,0 +1,51 @@
+@import ../../base/variables/colors
+@import ../../base/mixins/grid-tools
+
+#block-system-main-menu
+  ul:not(.contextual-links)
+
+    margin:   0
+    padding:  0
+
+
+
+    li
+      padding:          0
+      margin:           0
+
+      a, span.nolink
+        padding:        0.3em
+        display:        block
+        width:          100%
+        padding-left:   1.5em
+        background:     url('../images/bullet.png') 0.5em center no-repeat $color-main-menu-background
+
+      a.active, a:hover
+        background:     url('../images/bullet.png') 0.5em center no-repeat $color-main-menu-background-highlight
+
+    +at-only-breakpoint(1)
+
+      li
+        display:        block
+        border:         1px solid $color-main-menu-border
+        border-bottom:  0px
+        font-size:      1.2em
+
+        a, span.nolink
+          padding: 0.5em
+          padding-left:   1.5em
+
+
+    +at-breakpoint(2)
+      display:      table
+      table-layout: fixed
+      width:        100%
+      border:       1px solid $color-main-menu-border
+      color:        $color-main
+
+      li
+        display:          table-cell
+        border-right:     1px solid $color-main-menu-border
+
+        &:last-child
+          border-right:   0px

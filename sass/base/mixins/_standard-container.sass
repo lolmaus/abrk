@@ -1,0 +1,13 @@
+@import "development"
+@import "../variables/grid"
+
+// Applied to a container element
+=standard-container
+  +container                // Set up the Susy container!
+  +dev-grid-bg
+  max-width: $max-width     // Limit its maximum width
+
+  @for $bp-i from 2 through $number-of-bps
+    $bp: bp($bp-i)
+    +at-breakpoint($bp)
+      +dev-grid-bg

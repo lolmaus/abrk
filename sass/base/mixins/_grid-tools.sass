@@ -1,0 +1,35 @@
+@import "../variables/grid"
+@import development
+@import susy
+
+// Accepts a number of columns
+// Returns the em/px width of a container that wide
+@function col-width($col)
+  @return fix-ems(columns-width($col))
+
+=at-only-breakpoint($that-very-bp)
+  @for $bp-i from 1 through $number-of-bps
+    $bp: bp($bp-i)
+
+    @if $bp == $that-very-bp
+      $next-bp: bp($bp-i + 1)
+      @if $bp-i == 1
+        +at-breakpoint(0 $bp col-width($next-bp))
+          @content
+
+      @else if $bp-i == $number-of-bps
+        +at-breakpoint(col-width($bp) $bp)
+          @content
+
+      @else
+        $next-bp: bp($bp-i + 1)
+        +at-breakpoint(col-width($bp) $bp col-width($next-bp))
+          @content
+
+=span($columns, $context: $total-columns, $padding: false, $from: $from-direction)
+  +dev-outline
+  +span-columns($columns, $context, $padding, $from)
+
+=margin-center
+  margin-left:  auto
+  margin-right: auto

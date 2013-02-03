@@ -1,0 +1,33 @@
+@import ../../base/variables/colors
+@import ../../base/mixins/grid-tools
+
+#header-wrapper
+  background-color: $color-header-background
+  color:            $color-header-text
+
+  #header-wrapper-inner
+    padding-top: 1em
+
+    +at-only-breakpoint(1)
+      .logo-block
+        +span(1)
+        border-bottom: 1px solid $color-header-text
+
+      .contacts-block
+        margin-bottom: 1em
+
+    +at-only-breakpoint(2)
+      .logo-block
+        +span(2)
+        border-bottom: 1px solid $color-header-text
+
+      .contacts-block
+        margin-bottom: 1em
+
+    +at-breakpoint(3)
+      .logo-block
+        +span(2)
+
+      .contacts-block
+        +span(1 omega)
+        text-align: right
